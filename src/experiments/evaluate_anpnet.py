@@ -17,7 +17,6 @@ Usage example:
         --light_summary_dir $LIGHT_SUMMARY_DIR \
         --weight_decay_rate $WEIGHT_DECAY_RATE \
         --label 0 \
-        --net_type $NET_TYPE \
         --logits_output_file $LOGITS_OUTPUT_FILE
 
 """
@@ -151,6 +150,7 @@ def evaluate():
             num_clases_noun = dataset.num_classes()[1]
             num_clases_adjective = dataset.num_classes()[2]
 
+            # The output of the two networks will be concatenated later:
             logits_nouns, _ = resnet_v1_50(images, num_clases_noun,
                                            scope='resnet_nouns_v1_50',
                                            reuse=None,
@@ -171,7 +171,7 @@ def evaluate():
 
 
         # Deduct and devide by mean and variance calculated from the softmax layer at the output of the resnets
-        # This number was calculated for both the test and the train set
+        # This number was calculated for both the test and the train set.
 
         logits_nouns = (tf.nn.softmax(logits_nouns) - 0.0072675)/tf.sqrt(0.0020015)
         logits_adjectives = (tf.nn.softmax(logits_adjectives) - 0.0072675)/tf.sqrt(0.0020015)
@@ -199,11 +199,9 @@ def evaluate():
         # Calculate deep taylor decomposition for the top 5 predictions and concatenate
         # them in order to save them in a dictionary later.
 
-        ''' 
-        IMPORTANT: The function that calculates deep taylor decomposition do not allow multiple dimensions in axis 
-        2, because of this, each of the 5 dimensions will have to be calculated separately. 
-        '''
-
+        # IMPORTANT: The function that calculates deep taylor decomposition do not allow multiple dimensions in axis 
+        # 2, because of this, each of the 5 dimensions will have to be calculated separately. 
+      
         dtd_out0 = tf.nn.softmax(logits_anp) * pred[:,:,0]
         dtd_out1 = tf.nn.softmax(logits_anp) * pred[:,:,1]
         dtd_out2 = tf.nn.softmax(logits_anp) * pred[:,:,2]

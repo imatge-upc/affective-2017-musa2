@@ -1,23 +1,33 @@
 """
-Train softmax baseline on MVSO_EN_1200 in a multi-GPU environment.
+Train softmax baseline on mt-vso in a multi-GPU environment.
 
 This code is based on the Inception tutorial in the tensorflow/models repository.
 
 Usage example:
 
-    python 02_train_softmax_model.py \
-        --data_dir path_to_mvso_train_data_dir \
-        --train_dir path_to_output_dir \
-        --batch_size 32 \
-        --image_size 224 \
-        --max_steps 1000000 \
-        --num_gpus 4 \
-        --cnn resnet50 \
-        --optimizer rmsprop \
-        --initial_learning_rate 0.1 \
-        --weight_decay_rate 0.0001 \
-        --remove_dir \
-        --checkpoint path_to_model/resnet_v1_50_anp.ckpt
+    python train_baseline_model.py \
+        --data_dir $PATH_TO_MVSO_TRAIN_DATA_DIR \
+        --train_dir $PATH_TO_OUTPUT_DIR \
+        --batch_size $BATCH_SIZE \
+        --image_size $IMAGE_SIZE \
+        --max_steps $MAX_STEPS \
+        --num_gpus $NUM_GPUS \
+        --cnn $CNN \
+        --optimizer $OPTIMIZER \
+        --initial_learning_rate $INITIAL_LEARNING_RATE \
+        --weight_decay_rate $WEIGHT_DECAY_RATE \
+        --evaluation_job $PAT_TO_EVALUATION_SCRIPT \
+        --eval_interval_iters $EVAL_INTERVAL_ITERS \
+        --resume_training $RESUME_TRAINING \
+        --checkpoint $CHECKPOINT \
+        --remode_dir $REMOVE_DIR \
+        --light_summary_dir $LIGHT_SUMMARY_DIR \
+        --label $LABEL
+
+    The variable 'label' will give the information of the output of the network:
+        0: ANPs
+        1: Nouns
+        2: Adjectives
 
 """
 

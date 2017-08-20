@@ -1,31 +1,30 @@
 """
-Train softmax baseline on mt-vso in a multi-GPU environment.
+Train anpnet on mt-vso in a multi-GPU environment.
 
 This code is based on the Inception tutorial in the tensorflow/models repository.
 
 Usage example:
 
-	    python3 02_train_softmax_model_fusion.py \
-	        --data_dir $PATH_TO_MVSO_TRAIN_DATA_DIR \
-	        --train_dir $PATH_TO_OUTPUT_DIR \
-	        --batch_size $BATCH_SIZE \
-	        --image_size $IMAGE_SIZE \
-	        --max_steps $MAX_STEPS \
-	        --num_gpus $NUM_GPUS \
-	        --cnn $CNN \
-	        --optimizer $OPTIMIZER \
-	        --initial_learning_rate $INITIAL_LEARNING_RATE \
-	        --weight_decay_rate $WEIGHT_DECAY_RATE \
-	        --evaluation_job $PAT_TO_EVALUATION_SCRIPT \
-	        --eval_interval_iters $EVAL_INTERVAL_ITERS \
-	        --resume_training $RESUME_TRAINING \
-	        --checkpoint $CHECKPOINT \
-	        --checkpoint_adj $CHECKPOINT_ADJ \
-	        --checkpoint_noun $CHECKPOINT_NOUN \
-	        --remoev_dir $REMOVE_DIR \
-	        --light_summary_dir $LIGHT_SUMMARY_DIR \
-	        --label 0 \
-	        --net_type $NET_TYPE
+    python 02_train_softmax_model_fusion.py \
+        --data_dir $PATH_TO_MVSO_TRAIN_DATA_DIR \
+        --train_dir $PATH_TO_OUTPUT_DIR \
+        --batch_size $BATCH_SIZE \
+        --image_size $IMAGE_SIZE \
+        --max_steps $MAX_STEPS \
+        --num_gpus $NUM_GPUS \
+        --cnn $CNN \
+        --optimizer $OPTIMIZER \
+        --initial_learning_rate $INITIAL_LEARNING_RATE \
+        --weight_decay_rate $WEIGHT_DECAY_RATE \
+        --evaluation_job $PAT_TO_EVALUATION_SCRIPT \
+        --eval_interval_iters $EVAL_INTERVAL_ITERS \
+        --resume_training $RESUME_TRAINING \
+        --checkpoint $CHECKPOINT \
+        --checkpoint_adj $CHECKPOINT_ADJ \
+        --checkpoint_noun $CHECKPOINT_NOUN \
+        --remoev_dir $REMOVE_DIR \
+        --light_summary_dir $LIGHT_SUMMARY_DIR \
+        --label 0 \
 
 """
 

@@ -61,7 +61,7 @@ tf.app.flags.DEFINE_boolean('multi_task', False,
                             """Reads several labels for each sample""")
 
 tf.app.flags.DEFINE_integer('label', 0,
-                            """Reads several labels for each sample""")
+                            """The labels that will have to be used: 0 - ANPs, 1 - Nouns, 2 - Adjectives""")
 
 # Images are preprocessed asynchronously using multiple threads specified by
 # --num_preprocss_threads and the resulting processed images are stored in a
